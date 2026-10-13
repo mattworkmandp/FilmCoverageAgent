@@ -72,6 +72,25 @@ pins:
 | `FAL_MODEL_GPT` | GPT Image 2.5 Sunburst |
 | `FAL_MODEL_SEEDREAM` | Seedream V5 Pro |
 
+## Security
+
+- **The fal key never reaches the browser.** `FAL_KEY` is read only in
+  server API routes ([lib/fal.ts](lib/fal.ts)); nothing uses a
+  `NEXT_PUBLIC_` variable, and `/api/health` exposes only a boolean. Never
+  commit a real `.env` file — `.gitignore` blocks `.env*` (except the empty
+  `.env.example`). If a key ever leaks, revoke it in the fal dashboard.
+- **The API routes are unauthenticated by design.** Anyone who can reach
+  your deployment can generate media and upload images billed to the one
+  server-side fal key, and in-flight runs are addressed by response ID
+  alone — treat a shared deployment as one shared studio, not a
+  multi-tenant service. Before sharing the URL, keep Vercel Deployment
+  Protection on (or add your own auth) and set a spending limit on your
+  fal account/key.
+- **Media links are public.** Uploaded and generated images live on fal's
+  CDN behind unguessable but unauthenticated URLs; anyone with a link can
+  view a still. Chat history is stored only in each visitor's browser
+  `localStorage`.
+
 ## Run locally
 
 ```bash
