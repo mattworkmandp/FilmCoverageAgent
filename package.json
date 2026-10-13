@@ -1,0 +1,30 @@
+{
+  "name": "coverage-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "fal Agent powered dialogue-scene coverage generator: blocking, overhead diagrams, and WS/MS/CU shots across three image models.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --test \"lib/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fal-ai/client": "1.11.0-alpha.4",
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
+  }
+}
